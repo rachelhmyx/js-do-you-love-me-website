@@ -5,39 +5,173 @@
 }
 
 body{
+
     height:100vh;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    background:#ffe6e6;
-    font-family:Arial, sans-serif;
+
+    overflow:hidden;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:linear-gradient(
+            -45deg,
+            #ff9a9e,
+            #fad0c4,
+            #fbc2eb,
+            #a18cd1
+    );
+
+    background-size:400% 400%;
+
+    animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
 }
 
 .container{
+
     text-align:center;
+
+    padding:50px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.2);
 }
 
 h1{
+
+    color:white;
+
+    margin-bottom:15px;
+
+    font-size:42px;
+}
+
+.subtitle{
+
+    color:white;
+
     margin-bottom:40px;
-    color:#ff3366;
+
+    font-size:18px;
+}
+
+.buttons{
+
+    position:relative;
 }
 
 button{
-    padding:15px 35px;
-    font-size:18px;
+
     border:none;
-    border-radius:10px;
+
+    border-radius:12px;
+
     cursor:pointer;
+
+    font-size:20px;
+
+    padding:15px 35px;
+
+    transition:0.3s;
 }
 
 .yes-btn{
+
     background:#4CAF50;
+
     color:white;
-    margin-right:20px;
+
+    margin-right:25px;
+}
+
+.yes-btn:hover{
+
+    transform:scale(1.05);
 }
 
 .no-btn{
+
     background:#ff4d4d;
+
     color:white;
+
     position:absolute;
+}
+
+.message{
+
+    display:none;
+
+    margin-top:40px;
+
+    font-size:35px;
+
+    color:white;
+
+    font-weight:bold;
+
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.heart{
+
+    position:fixed;
+
+    bottom:-50px;
+
+    font-size:35px;
+
+    animation:fly 4s linear forwards;
+}
+
+@keyframes fly{
+
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
 }
