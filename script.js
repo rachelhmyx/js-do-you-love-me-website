@@ -13,12 +13,21 @@ function moveButton(){
     const title =
         document.getElementById("title");
 
+    const container =
+        document.querySelector(".container");
+
     count++;
 
-    scale += 0.1;
+    // YES phóng to nhưng không quá lớn
+    if(scale < 2){
 
-    yesBtn.style.transform =
-        `scale(${scale})`;
+        scale += 0.08;
+
+        yesBtn.style.transform =
+            `scale(${scale})`;
+    }
+
+    // Thay đổi câu hỏi
 
     if(count === 3){
 
@@ -44,13 +53,38 @@ function moveButton(){
             "❤️ Please Say YES";
     }
 
-    let x =
-        Math.random() *
-        (window.innerWidth - 150);
+    if(count === 15){
 
-    let y =
-        Math.random() *
-        (window.innerHeight - 100);
+        title.innerHTML =
+            "🥹 Just Click YES";
+    }
+
+    const containerRect =
+        container.getBoundingClientRect();
+
+    const buttonWidth =
+        noBtn.offsetWidth;
+
+    const buttonHeight =
+        noBtn.offsetHeight;
+
+    const padding = 20;
+
+    const maxX =
+        containerRect.width
+        - buttonWidth
+        - padding;
+
+    const maxY =
+        containerRect.height
+        - buttonHeight
+        - padding;
+
+    const x =
+        Math.random() * maxX;
+
+    const y =
+        100 + Math.random() * (maxY - 100);
 
     noBtn.style.left =
         x + "px";
@@ -67,19 +101,26 @@ function yesClick(){
     message.style.display =
         "block";
 
+    document
+        .getElementById("title")
+        .innerHTML =
+        "😍 You Made My Day 😍";
+
     createHearts();
 
     launchConfetti();
-
-    document.getElementById("title").innerHTML =
-        "😍 You Made My Day 😍";
 }
 
 function createHearts(){
 
-    for(let i = 0; i < 40; i++){
+    const totalHearts =
+        window.innerWidth < 768
+            ? 25
+            : 50;
 
-        let heart =
+    for(let i = 0; i < totalHearts; i++){
+
+        const heart =
             document.createElement("div");
 
         heart.classList.add("heart");
@@ -91,7 +132,7 @@ function createHearts(){
             window.innerWidth + "px";
 
         heart.style.fontSize =
-            (20 + Math.random()*30) + "px";
+            (20 + Math.random() * 25) + "px";
 
         document.body.appendChild(heart);
 
@@ -106,8 +147,16 @@ function createHearts(){
 function launchConfetti(){
 
     confetti({
-        particleCount:200,
+
+        particleCount:
+            window.innerWidth < 768
+                ? 120
+                : 250,
+
         spread:180,
-        origin:{y:0.6}
+
+        origin:{
+            y:0.6
+        }
     });
 }
