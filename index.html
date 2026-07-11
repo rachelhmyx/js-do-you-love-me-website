@@ -3,27 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Do You Love Me?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me? ❤️</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>❤️ Do You Love Me? ❤️</h1>
+    <h1 id="title">
+        ❤️ Do You Love Me? ❤️
+    </h1>
 
-    <button class="yes-btn"
-            onclick="yesClick()">
-        YES
-    </button>
+    <p class="subtitle">
+        Please choose carefully 😄
+    </p>
 
-    <button class="no-btn"
-            id="noBtn"
-            onmouseover="moveButton()">
-        NO
-    </button>
+    <div class="buttons">
+
+        <button
+                class="yes-btn"
+                id="yesBtn"
+                onclick="yesClick()">
+
+            YES ❤️
+
+        </button>
+
+        <button
+                class="no-btn"
+                id="noBtn"
+                onmouseover="moveButton()">
+
+            NO 😅
+
+        </button>
+
+    </div>
+
+    <div id="loveMessage" class="message">
+
+        💖 I Love You Too 💖
+
+    </div>
 
 </div>
 
