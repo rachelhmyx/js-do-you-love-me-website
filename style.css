@@ -6,7 +6,7 @@
 
 body{
 
-    height:100vh;
+    min-height:100vh;
 
     display:flex;
 
@@ -29,6 +29,8 @@ body{
     background-size:400% 400%;
 
     animation:bgMove 10s ease infinite;
+
+    padding:20px;
 }
 
 @keyframes bgMove{
@@ -48,11 +50,17 @@ body{
 
 .container{
 
+    position:relative;
+
+    width:min(90vw, 650px);
+
+    min-height:420px;
+
+    padding:30px;
+
+    border-radius:24px;
+
     text-align:center;
-
-    padding:50px;
-
-    border-radius:25px;
 
     background:rgba(255,255,255,0.2);
 
@@ -65,23 +73,25 @@ h1{
 
     color:white;
 
-    margin-bottom:15px;
+    font-size:clamp(28px, 5vw, 42px);
 
-    font-size:42px;
+    margin-bottom:15px;
 }
 
 .subtitle{
 
     color:white;
 
-    margin-bottom:40px;
+    font-size:clamp(14px, 3vw, 18px);
 
-    font-size:18px;
+    margin-bottom:40px;
 }
 
 .buttons{
 
     position:relative;
+
+    height:220px;
 }
 
 button{
@@ -92,9 +102,9 @@ button{
 
     cursor:pointer;
 
-    font-size:20px;
+    padding:14px 28px;
 
-    padding:15px 35px;
+    font-size:clamp(16px, 3vw, 20px);
 
     transition:0.3s;
 }
@@ -105,30 +115,31 @@ button{
 
     color:white;
 
-    margin-right:25px;
-}
-
-.yes-btn:hover{
-
-    transform:scale(1.05);
+    z-index:2;
 }
 
 .no-btn{
+
+    position:absolute;
+
+    left:60%;
+
+    top:0;
 
     background:#ff4d4d;
 
     color:white;
 
-    position:absolute;
+    z-index:2;
 }
 
 .message{
 
     display:none;
 
-    margin-top:40px;
+    margin-top:30px;
 
-    font-size:35px;
+    font-size:clamp(24px, 5vw, 36px);
 
     color:white;
 
@@ -144,7 +155,7 @@ button{
     }
 
     50%{
-        transform:scale(1.1);
+        transform:scale(1.08);
     }
 
     100%{
@@ -158,20 +169,48 @@ button{
 
     bottom:-50px;
 
-    font-size:35px;
-
     animation:fly 4s linear forwards;
+
+    pointer-events:none;
 }
 
 @keyframes fly{
 
     from{
+
         transform:translateY(0);
+
         opacity:1;
     }
 
     to{
-        transform:translateY(-100vh);
+
+        transform:translateY(-120vh);
+
         opacity:0;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 768px){
+
+    .container{
+
+        width:95vw;
+
+        min-height:500px;
+
+        padding:25px;
+    }
+
+    .buttons{
+
+        height:260px;
+    }
+
+    button{
+
+        padding:12px 24px;
     }
 }
